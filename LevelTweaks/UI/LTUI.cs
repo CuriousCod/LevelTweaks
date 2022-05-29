@@ -17,7 +17,7 @@ namespace LevelTweaks.UI
     {
         public StandardLevelDetailView detailView;
 
-        public TweakCell selectedTweak = new TweakCell(new TweakData() { Name = "Loading...", NJS = -999f, Offset = -999f });
+        public TweakCell selectedTweak = new TweakCell(new TweakData() { Name = "Loading...", NJS = -999f, Offset = -999f }, 128);
         public int selectedIndex;
 
         [UIComponent("tweak-list")]
@@ -113,6 +113,18 @@ namespace LevelTweaks.UI
             }
         }
 
+        private bool _showEditor = false;
+        [UIValue("show-editor")]
+        public bool ShowEditor
+        {
+            get => _showEditor;
+            set
+            {
+                _showEditor = value;
+                NotifyPropertyChanged();
+            }
+        }
+        
         [UIAction("new")]
         public void New()
         {
@@ -130,7 +142,7 @@ namespace LevelTweaks.UI
                 Name = "Custom",
                 NJS = selected.noteJumpMovementSpeed,
                 Offset = selected.noteJumpStartBeatOffset
-            });
+            }, selected.level.beatsPerMinute);
             tweakList.data.Add(newTweak);
             Configuration.Config.Instance.Tweaks.Add(newTweak.data);
 
@@ -234,12 +246,12 @@ namespace LevelTweaks.UI
                 NJS = selected.noteJumpMovementSpeed,
                 Offset = selected.noteJumpStartBeatOffset,
                 Selected = true
-            }, true));
+            }, selected.level.beatsPerMinute, true));
             Plugin.lastSelectedMode = charact.selectedBeatmapCharacteristic.serializedName;
             List<TweakData> tweakData = Configuration.Config.Instance.Tweaks.Where(t => t.LevelInfo.Equals(selected, charact.selectedBeatmapCharacteristic.serializedName)).ToList();
             List<TweakCell> cells = new List<TweakCell>();
             foreach (var t in tweakData)
-                cells.Add(new TweakCell(t));
+                cells.Add(new TweakCell(t, selected.level.beatsPerMinute));
             tweakList.data.AddRange(cells);
             tweakList.tableView.ReloadData();
 
