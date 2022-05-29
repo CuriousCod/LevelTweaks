@@ -9,13 +9,13 @@
     <page-button click-event="tweak-list#PageDown" direction="Down"/>
   </vertical>
   <modifier-container anchor-pos-x="30" anchor-pos-y="~y2-pos">
-    <horizontal>
+	  <!-- <horizontal>
       <img src="LevelTweaks.Assets.peepo.gif" pref-width="8" pref-height="8" preserve-aspect="true"/>
       <img src="LevelTweaks.Assets.obama.png" pref-width="8" pref-height="8" preserve-aspect="true"/>
       <img src="LevelTweaks.Assets.mio_honda.gif" pref-width="8" pref-height="8" preserve-aspect="true"/>
       <img src="LevelTweaks.Assets.gaelican.png" pref-width="8" pref-height="8" preserve-aspect="true"/>
       <img src="LevelTweaks.Assets.ninja.gif" pref-width="8" pref-height="8" preserve-aspect="true"/>
-    </horizontal>
+    </horizontal>-->
     <button text="New" on-click="new"/>
     <button text="Delete" on-click="delete" interactable="~can-delete"/>
     <string-setting text="Name" value="name" get-event="set" apply-on-change="true" on-change="reload"/>

@@ -20,10 +20,10 @@ namespace LevelTweaks
                 
                 Logger.log.Info($"offset: {tweak.Offset}, njs: {tweak.NJS}");
 
-                if (tweak.NJS != data.difficultyBeatmap.noteJumpMovementSpeed)
-                    BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("LevelTweaks");
-                else
-                    BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("LevelTweaks");
+                // if (tweak.NJS != data.difficultyBeatmap.noteJumpMovementSpeed)
+                //     BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("LevelTweaks");
+                // else
+                //     BS_Utils.Gameplay.ScoreSubmission.DisableSubmission("LevelTweaks");
 
                 ____initData.SetField("noteJumpMovementSpeed", tweak.NJS);
                 ____initData.SetField("noteJumpStartBeatOffset", tweak.Offset);
